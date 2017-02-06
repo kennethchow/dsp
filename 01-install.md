@@ -48,14 +48,13 @@ cross-platform.
 
 Did you install Python 2 or 3? Why?  
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+I installed python 3.6.0 because it's good due diligence to keep up to date with language versions and break old habits from older versions.
 
 ###Q2. Which Python Version Installed   
 
 How can you check the version of Python installed if you happen to be on an unfamiliar computer?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
-
+By using the ```python --version``` command.
  
 
 
