@@ -48,14 +48,13 @@ cross-platform.
 
 Did you install Python 2 or 3? Why?  
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Python 3.6.0 because it's recommended by the bootcamp and it's good to keep up to date versions and become accustomed to newer versions instead of keeping old habits.
 
 ###Q2. Which Python Version Installed   
 
 How can you check the version of Python installed if you happen to be on an unfamiliar computer?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+open terminal and input ```python --version```
 
  
-
 
