@@ -60,7 +60,7 @@ We will also use Jupyter (IPython) notebooks, but this does not remove the need 
 
 What terminal editor will you use? How did you make your decision?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+I chose to use vim because it's default on most systems as mentioned and i found the tutorial to be quite intuitive.
 
 --
 
@@ -68,6 +68,7 @@ What terminal editor will you use? How did you make your decision?
 
 What graphical editor will you use? How did you make your decision? What are some interesting features of your editor? What are some useful keyboard shortcuts for your editor? How do you customize your editor?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+I've chosen to use sublime as it's recommended for beginners. I've installed a package called package control which allows me to install a myriad of third-party packages available for the text editor which opens up the ability to customize and install packages straight from the text editor itself.
 
+A useful keyboard shortcut is ⌘ + ⇧ + p which brings up the command palette containing all the available default commands as well as commands added by third-party packages.
  
