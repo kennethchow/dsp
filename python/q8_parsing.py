@@ -4,3 +4,16 @@
 # against opponents, and had 36 goals scored against them). Write a program to read the file, 
 # then print the name of the team with the smallest difference in ‘for’ and ‘against’ goals.
 
+import csv
+
+reader = csv.reader(open('/Users/RGD/ds/metis/metisgh/untitled folder/dsp/python/football.csv'), skipinitialspace=True)
+reader.__next__()
+difference = 10
+smallest = "Team"
+
+for r in reader:
+    if abs(int(r[5])-int(r[6])) < difference:
+    	difference = abs(int(r[5])-int(r[6]))
+    	smallest = r[0]
+
+print(smallest)

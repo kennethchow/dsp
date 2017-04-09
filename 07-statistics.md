@@ -62,16 +62,72 @@ Cohen's D is an example of effect size.  Other examples of effect size are:  cor
 
 You will see effect size again and again in results of algorithms that are run in data science.  For instance, in the bootcamp, when you run a regression analysis, you will recognize the t-statistic as an example of effect size.
 
+def CohenEffectSize(group1, group2):
+    diff = group1.mean() - group2.mean()
+
+    var1 = group1.var()
+    var2 = group2.var()
+    n1, n2 = len(group1), len(group2)
+
+    pooled_var = (n1 * var1 + n2 * var2) / (n1 + n2)
+    d = diff / np.sqrt(pooled_var)
+    return d
+
+preg = nsfg.ReadFemPreg()
+live = preg[preg.outcome == 1]
+firsts = live[live.birthord == 1]
+others = live[live.birthord != 1]
+
+CohenEffectSize(firsts.prglngth, others.prglngth)
+>> 0.028879044654449883
+
+CohenEffectSize(firsts.totalwgt_lb, others.totalwgt_lb)
+>> -0.088672927072602006
+
+First babies are lighter than subsequent babies which is the opposite of pregnancy length as first babies have a longer gestation period relative to subsequent ones.
+
 ###Q2. [Think Stats Chapter 3 Exercise 1](statistics/3-1-actual_biased.md) (actual vs. biased)
 This problem presents a robust example of actual vs biased data.  As a data scientist, it will be important to examine not only the data that is available, but also the data that may be missing but highly relevant.  You will see how the absence of this relevant data will bias a dataset, its distribution, and ultimately, its statistical interpretation.
+
+resp = nsfg.ReadFemResp()
+actualu18pmf = thinkstats2.Pmf(resp.numkdhh, label='actualu18')
+biased_u18pmf = BiasPmf(actualu18pmf, label='observedu18')
+
+thinkplot.PrePlot(2)
+thinkplot.Pmfs([actualu18pmf, biased_u18pmf])
+thinkplot.Config(xlabel='Number of U18s', ylabel='PMF')
+
+print('Actual Mean', actualu18pmf.Mean())
+>>Actual Mean 1.02420515504
+
+print('Biased Mean', biased_u18pmf.Mean())
+>>Biased Mean 2.40367910066
 
 ###Q3. [Think Stats Chapter 4 Exercise 2](statistics/4-2-random_dist.md) (random distribution)  
 This questions asks you to examine the function that produces random numbers.  Is it really random?  A good way to test that is to examine the pmf and cdf of the list of random numbers and visualize the distribution.  If you're not sure what pmf is, read more about it in Chapter 3.  
 
+randlist = np.random.random(1000)
+pmf = thinkstats2.Pmf(randlist, label = 'randomnumbers01')
+thinkplot.Pmf(pmf)
+thinkplot.Config(xlabel='number', ylabel='pmf')
+thinkplot.Show
+
+cdf = thinkstats2.Cdf(randlist, label='randomnumbers01')
+thinkplot.Cdf(cdf)
+thinkplot.Config(xlabel='random number', ylabel='cdf')
+thinkplot.Show
+
+The PMF distribution shows an even distribution at a probability of 0.010 which is the probability expected of a randomly generated list of a thousand numbers between 0 and 1
+The CDF distribution is also uniformly distributed as a straight line with 20% of values under 0.2 and 40% at 0.4 and so on.
+Considering this, it suggests that the random number generator produces uniformly random numbers.
+
 ###Q4. [Think Stats Chapter 5 Exercise 1](statistics/5-1-blue_men.md) (normal distribution of blue men)
 This is a classic example of hypothesis testing using the normal distribution.  The effect size used here is the Z-statistic. 
 
+bluemaneligible = dist.cdf(185.42000000000002) - dist.cdf(177.8)
+print(bluemaneligible)
 
+>> 0.342746837631
 
 ###Q5. Bayesian (Elvis Presley twin) 
 
@@ -79,14 +135,15 @@ Bayes' Theorem is an important tool in understanding what we really know, given 
 
 Elvis Presley had a twin brother who died at birth.  What is the probability that Elvis was an identical twin? Assume we observe the following probabilities in the population: fraternal twin is 1/125 and identical twin is 1/300.  
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+5/11
 
 ---
 
 ###Q6. Bayesian &amp; Frequentist Comparison  
 How do frequentist and Bayesian statistics compare?
 
->> REPLACE THIS TEXT WITH YOUR RESPONSE
+Frequentist statistics defines probability as the frequency of occurence of events over many trials
+Whereas Bayesian statistics defines probability as an indication of the plausibility of an event occurring based on evidence which supports the current state of the world.
 
 ---
 
